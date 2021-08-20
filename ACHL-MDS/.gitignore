@@ -1,0 +1,8 @@
+/target/
+/.vscode/
+/.settings/
+/.classpath
+/.factorypath
+/.project
+/bin/
+/debug.log
