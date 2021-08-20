@@ -8,5 +8,3 @@ Feature: Title of your feature
     When Verify the dashbord header
     And They need to click on a Select dropdown menu icon
     And Logout from the application
-
-
