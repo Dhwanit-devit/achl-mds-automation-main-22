@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sat May 15 22:33:15 IST 2021
+picocontainer-2.15.jar>central=
+picocontainer-2.15.pom>central=
+picocontainer-2.15-sources.jar>central=

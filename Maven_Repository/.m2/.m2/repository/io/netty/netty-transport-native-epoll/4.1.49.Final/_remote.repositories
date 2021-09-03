@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sat May 15 22:32:48 IST 2021
+netty-transport-native-epoll-4.1.49.Final.pom>central=
+netty-transport-native-epoll-4.1.49.Final-sources.jar>central=
+netty-transport-native-epoll-4.1.49.Final.jar>central=
+netty-transport-native-epoll-4.1.49.Final-linux-x86_64.jar>central=

@@ -3,15 +3,24 @@ package runners;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(features = "src/test/resources/FeatureFiles", tags = "@Activityfilter or @DashboardModule or @FilesModule or @GlobalSearch or @Managesetup or @MessagesModule or @MilestoneModule or @NoteBookModule or @UIModule or @UsersModule", glue = {
-		"helper", "stepDefinitions" }, plugin = { "pretty", "json:target/cucumber-reports/Cucumber.json",
-				"junit:target/cucumber-reports/Cucumber.xml", "html:target/cucumber-reports/Cucumber.html" })
+@CucumberOptions(
+				features = "src/test/resources/FeatureFiles", 
+				glue = {"helper", "stepDefinitions" }, 
+				plugin ={ 	"pretty", 	
+							"json:target/cucumber-reports/Cucumber.json",
+							"junit:target/cucumber-reports/Cucumber.xml", 
+							"html:target/cucumber-reports/Cucumber.html" 
+						},
+				dryRun = false,
+				tags = "@F1"
+				)
 
 public class TestRunner extends AbstractTestNGCucumberTests {
 	@AfterTest(alwaysRun = true)

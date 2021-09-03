@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sat May 15 22:32:41 IST 2021
+netty-reactive-streams-2.0.4-sources.jar>central=
+netty-reactive-streams-2.0.4.jar>central=
+netty-reactive-streams-2.0.4.pom>central=
