@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Aug 16 20:10:54 IST 2021
+jcommander-1.78.jar>central=
+jcommander-1.78-sources.jar>central=
+jcommander-1.78.pom>central=

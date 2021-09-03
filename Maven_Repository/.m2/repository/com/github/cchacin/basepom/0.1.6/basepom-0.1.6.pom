@@ -1,0 +1,408 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.cchacin</groupId>
+    <artifactId>basepom</artifactId>
+    <packaging>pom</packaging>
+    <version>0.1.6</version>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>9</version>
+        <!--Fixes broken Maven 3 warning-->
+        <relativePath />
+    </parent>
+
+    <name>Base POM Java EE</name>
+    <description>Base POM for Java EE Projects</description>
+    <inceptionYear>2014</inceptionYear>
+    <url>https://github.com/cchacin/base-pom</url>
+
+    <scm>
+        <url>scm:git:git@github.com:cchacin/base-pom.git</url>
+        <connection>scm:git:git@github.com:cchacin/base-pom.git</connection>
+        <developerConnection>scm:git:git@github.com:cchacin/base-pom.git</developerConnection>
+        <tag>v0.1.6</tag>
+    </scm>
+
+    <prerequisites>
+        <maven>${basepom.maven.version}</maven>
+    </prerequisites>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>cchacin</id>
+            <name>Carlos Chacin</name>
+            <email>cchacin@gmail.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>-4</timezone>
+        </developer>
+    </developers>
+
+    <distributionManagement>
+      <snapshotRepository>
+        <id>ossrh</id>
+        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      </snapshotRepository>
+      <repository>
+        <id>ossrh</id>
+        <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+      </repository>
+    </distributionManagement>
+
+    <properties>
+        <!-- Version strings -->
+        <project.build.targetJdk>1.8</project.build.targetJdk>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.inputEncoding>UTF-8</project.reporting.inputEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <basepom.maven.version>3.0.1</basepom.maven.version>
+
+        <basepom.plugin.checkstyle.version>2.12.1</basepom.plugin.checkstyle.version>
+        <basepom.plugin.findbugs.version>3.0.0</basepom.plugin.findbugs.version>
+        <basepom.plugin.git-commit-id.version>2.1.10</basepom.plugin.git-commit-id.version>
+        <basepom.plugin.pmd.version>3.2</basepom.plugin.pmd.version>
+        <basepom.plugin.release.version>2.5</basepom.plugin.release.version>
+        <basepom.plugin.gpg.version>1.5</basepom.plugin.gpg.version>
+        <basepom.plugin.scm.version>1.9.1</basepom.plugin.scm.version>
+        <basepom.plugin.resources.version>2.6</basepom.plugin.resources.version>
+        <basepom.plugin.source.version>2.3</basepom.plugin.source.version>
+        <basepom.plugin.javadoc.version>2.9.1</basepom.plugin.javadoc.version>
+        <basepom.plugin.war.version>2.4</basepom.plugin.war.version>
+        <basepom.plugin.surefire.version>2.17</basepom.plugin.surefire.version>
+        <basepom.plugin.failsafe.version>2.17</basepom.plugin.failsafe.version>
+        <basepom.plugin.license.version>2.6</basepom.plugin.license.version>
+
+    </properties>
+
+    <build>
+
+        <finalName>${project.artifactId}-${project.version}</finalName>
+
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <testResources>
+            <testResource>
+                <directory>${basedir}/src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${basepom.plugin.source.version}</version>
+                    <executions>
+                        <execution>
+                            <id>sources</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${basepom.plugin.javadoc.version}</version>
+                    <executions>
+                        <execution>
+                            <id>javadoc</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Resources plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${basepom.plugin.resources.version}</version>
+                    <configuration>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+
+                <!-- Surefire plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${basepom.plugin.surefire.version}</version>
+                    <configuration>
+                        <forkCount>2.5C</forkCount>
+                        <reuseForks>false</reuseForks>
+                        <useSystemClassLoader>false</useSystemClassLoader>
+                        <failIfNoTests>false</failIfNoTests>
+                        <systemPropertyVariables>
+                            <buildDirectory>${project.build.directory}</buildDirectory>
+                        </systemPropertyVariables>
+                        <excludes>
+                            <exclude>**/*ITest.java</exclude>
+                            <exclude>**/*ITests.java</exclude>
+                        </excludes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>unit-tests</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Failsafe plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${basepom.plugin.failsafe.version}</version>
+                    <configuration>
+                        <includes>
+                            <include>**/*ITest.java</include>
+                            <include>**/*ITests.java</include>
+                        </includes>
+                        <useSystemClassLoader>false</useSystemClassLoader>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>integration-test</goal>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- War plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${basepom.plugin.war.version}</version>
+                    <configuration>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                        <webResources>
+                            <resource>
+                                <directory>${basedir}/src/main/webapp/WEB-INF</directory>
+                                <filtering>true</filtering>
+                                <targetPath>WEB-INF</targetPath>
+                            </resource>
+                        </webResources>
+                    </configuration>
+                </plugin>
+
+                <!-- Git plugin -->
+                <plugin>
+                    <groupId>pl.project13.maven</groupId>
+                    <artifactId>git-commit-id-plugin</artifactId>
+                    <version>${basepom.plugin.git-commit-id.version}</version>
+                    <executions>
+                        <execution>
+                            <id>git-info</id>
+                            <goals>
+                                <goal>revision</goal>
+                            </goals>
+                            <configuration>
+                                <gitDescribe>
+                                    <skip>true</skip>
+                                </gitDescribe>
+                                <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                                <generateGitPropertiesFilename>target/classes/git.properties
+                                </generateGitPropertiesFilename>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Eclipse Formatter Plugin -->
+                <plugin>
+                    <groupId>com.googlecode.maven-java-formatter-plugin</groupId>
+                    <artifactId>maven-java-formatter-plugin</artifactId>
+                    <version>0.4</version>
+                    <configuration>
+                        <overrideConfigCompilerVersion>true</overrideConfigCompilerVersion>
+                        <compilerSource>${project.build.targetJdk}</compilerSource>
+                        <compilerCompliance>${project.build.targetJdk}</compilerCompliance>
+                        <compilerTargetPlatform>${project.build.targetJdk}</compilerTargetPlatform>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>format</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.7.2.201409121644</version>
+                    <executions>
+                        <execution>
+                            <id>default-prepare-agent</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>default-report</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>default-check</id>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>com.mycila</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <version>${basepom.plugin.license.version}</version>
+                    <configuration>
+                        <basedir>${basedir}</basedir>
+                        <header>${basedir}/header.txt</header>
+                        <properties>
+                            <owner>Carlos Chacin</owner>
+                            <email>cchacin@gmail.com</email>
+                        </properties>
+                        <quiet>false</quiet>
+                        <failIfMissing>true</failIfMissing>
+                        <aggregate>false</aggregate>
+                        <includes>
+                            <include>src/main/java/</include>
+                            <include>src/test/java/</include>
+                        </includes>
+                        <excludes>
+                            <exclude>**/README</exclude>
+                            <exclude>src/test/resources/**</exclude>
+                            <exclude>src/main/resources/**</exclude>
+                        </excludes>
+                        <useDefaultExcludes>true</useDefaultExcludes>
+                        <mapping>
+                            <java>JAVADOC_STYLE</java>
+                        </mapping>
+                        <strictCheck>true</strictCheck>
+                        <useDefaultMapping>true</useDefaultMapping>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>${basepom.plugin.pmd.version}</version>
+                    <configuration>
+                        <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+                        <targetJdk>${project.build.targetJdk}</targetJdk>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${basepom.plugin.release.version}</version>
+                    <configuration>
+                        <tagNameFormat>v@{project.version}</tagNameFormat>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>${basepom.plugin.findbugs.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${basepom.plugin.checkstyle.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>${basepom.plugin.gpg.version}</version>
+                    <executions>
+                        <execution>
+                            <id>sign-artifacts</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+        </plugins>
+
+    </build>
+
+</project>

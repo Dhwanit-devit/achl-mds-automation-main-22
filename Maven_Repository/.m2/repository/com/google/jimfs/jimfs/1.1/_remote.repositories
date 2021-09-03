@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Aug 11 01:44:12 IST 2021
+jimfs-1.1-sources.jar>central=
+jimfs-1.1.jar>central=
+jimfs-1.1.pom>central=

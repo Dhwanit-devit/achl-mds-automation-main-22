@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Aug 11 01:42:15 IST 2021
+icu4j-59.1-sources.jar>central=
+icu4j-59.1.pom>central=
+icu4j-59.1.jar>central=
