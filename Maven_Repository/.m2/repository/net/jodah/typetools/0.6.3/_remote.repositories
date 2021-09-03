@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Aug 16 02:44:50 IST 2021
+typetools-0.6.3.jar>central=
+typetools-0.6.3-sources.jar>central=
+typetools-0.6.3.pom>central=

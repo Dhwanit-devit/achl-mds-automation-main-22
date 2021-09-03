@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Aug 11 01:41:10 IST 2021
+serenity-core-2.4.24.jar>central=
+serenity-core-2.4.24-sources.jar>central=
+serenity-core-2.4.24.pom>central=
