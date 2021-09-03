@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Aug 11 01:44:24 IST 2021
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1628626464132
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact jakarta.xml.bind\:jakarta.xml.bind-api\:jar\:sources\:2.3.3 from/to central (https\://repo.maven.apache.org/maven2)\: The operation was cancelled.

@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Aug 16 08:20:35 IST 2021
+zipkin-reporter-2.15.2.jar>central=
+zipkin-reporter-2.15.2-sources.jar>central=
+zipkin-reporter-2.15.2.pom>central=

@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Aug 16 04:46:31 IST 2021
+javax.websocket-api-1.1.pom>central=
+javax.websocket-api-1.1-sources.jar>central=
+javax.websocket-api-1.1.jar>central=

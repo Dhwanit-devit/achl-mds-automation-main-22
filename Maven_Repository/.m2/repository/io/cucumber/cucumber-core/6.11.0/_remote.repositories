@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Aug 16 02:56:09 IST 2021
+cucumber-core-6.11.0.jar>central=
+cucumber-core-6.11.0-sources.jar>central=
+cucumber-core-6.11.0.pom>central=
